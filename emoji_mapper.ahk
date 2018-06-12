@@ -3,7 +3,14 @@
 
 global _IsEmojiModeOn := false
 global _IsNotificationEnabled := true
-global _Emojis := ["263A", "1F602", "1F917", "1F60F", "2764", "", ""]
+global _Emojis := []
+global _ConfigIniPath := ".\config.ini"
+
+global _TrayTipTitle := "EMOJI KEYBOARD"
+global _DefaultTrayTipDuration := 1 ;secs
+global _MappedKeyPrefix := "Key"
+
+LoadSetup()
 
 !F1::Reload
 
@@ -15,26 +22,20 @@ return
 
 #T::
 _IsNotificationEnabled := !_IsNotificationEnabled
+WriteCurrentSettings()
 return
-
-; HELPERS
 
 ToggleEmojiMode()
 {
   _IsEmojiModeOn := not _IsEmojiModeOn 
+  WriteCurrentSettings()
 
-  ShowNotificationIfAvailable()
-  return
-}
-
-ShowNotificationIfAvailable()
-{
   if _IsNotificationEnabled
   {
     onOrOff := _IsEmojiModeOn ? "ON" : "OFF"
     TrayTip, EMOJI KEYBOARD, Emoji keyboard is %onOrOff%`nWin + T to toggle notification, 1
   }
-	return
+  return
 }
 
 SendUnicode(code)
@@ -55,6 +56,11 @@ SendUnicode(code)
 	*<!3:: SendUnicode(_Emojis[3])
 	*<!4:: SendUnicode(_Emojis[4])
 	*<!5:: SendUnicode(_Emojis[5])
+	*<!6:: SendUnicode(_Emojis[6])
+	*<!7:: SendUnicode(_Emojis[7])
+	*<!8:: SendUnicode(_Emojis[8])
+	*<!9:: SendUnicode(_Emojis[9])
+	*<!0:: SendUnicode(_Emojis[10])
 }
 return
 
@@ -66,3 +72,38 @@ return
 	SendUnicode(hexCode)	
 }
 return
+
+LoadSetup() 
+{
+	mapKeyCount = 0
+	IniRead, _IsEmojiModeOn, %_ConfigIniPath%, Main, IsEmojiModeOn, 0
+	IniRead, _IsNotificationEnabled, %_ConfigIniPath%, Main, IsNotificationEnabled, 0
+	IniRead, MappedKeyCount, %_ConfigIniPath%, Main, MappedKeyCount , 0
+	Loop %MappedKeyCount%,
+	{
+		emojiCode = 
+		IniRead, emojiCode, %_ConfigIniPath%, Mapping, %_MappedKeyPrefix%%A_Index%
+		_Emojis[A_Index] := emojiCode
+	}
+
+	IfNotExist %_ConfigIniPath%
+	{
+		WriteCurrentSettings()		
+		IniWrite, 10, %_ConfigIniPath%, Main, MappedKeyCount
+
+		Loop 10,
+		{
+			value := _MappedKeyPrefix . Mod(A_Index, 10)
+			IniWrite, "", %_ConfigIniPath%, Mapping, %value%
+		}
+	}
+	return
+}
+
+
+WriteCurrentSettings()
+{
+	IniWrite, %_IsEmojiModeOn%, %_ConfigIniPath%, Main, IsEmojiModeOn
+	IniWrite, %_IsNotificationEnabled%, %_ConfigIniPath%, Main, IsNotificationEnabled		
+	return
+}
