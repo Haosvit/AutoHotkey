@@ -11,6 +11,7 @@ global _DefaultTrayTipDuration := 1 ;secs
 global _MappedKeyPrefix := "Key"
 
 LoadSetup()
+InitTrayMenu()
 UpdateTrayIcon()
 
 !F1::Reload
@@ -77,6 +78,13 @@ return
 }
 return
 
+InitTrayMenu() 
+{
+	Menu, Tray, Add, 
+	Menu, Tray, Add, Edit Emoji Mapping, gEditEmojiMapping
+	return
+}
+
 UpdateTrayIcon() 
 {
 	iconName := _IsEmojiModeOn ? "on.ico" : "off.ico"
@@ -117,3 +125,8 @@ WriteCurrentSettings()
 	IniWrite, %_IsNotificationEnabled%, %_ConfigIniPath%, Main, IsNotificationEnabled		
 	return
 }
+
+; Tray menu g lables
+gEditEmojiMapping:
+	Run %_ConfigIniPath%
+return
