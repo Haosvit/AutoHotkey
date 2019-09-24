@@ -70,13 +70,13 @@ SendUnicode(code)
 return
 
 ; send any unicode code in HEX
-`::
-{
-	hexCode =
-	Input hexCode, T5, {space} {enter} {esc}
-	SendUnicode(hexCode)	
-}
-return
+;`::
+;{
+;	hexCode =
+;	Input hexCode, T5, {space} {enter} {esc}
+;	SendUnicode(hexCode)	
+;}
+;return
 
 InitTrayMenu() 
 {
