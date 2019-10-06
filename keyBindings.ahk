@@ -1,2 +1,2 @@
-~RButton & WheelUp:: send ^{NumpadAdd}
-~RButton & WheelDown:: send ^{NumpadSub}
+~LButton & WheelUp:: send ^{NumpadAdd}
+~LButton & WheelDown:: send ^{NumpadSub}
