@@ -1,1 +1,1 @@
-mklink "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\master-shortcut.ahk" .\master.ahk
+cmd /c mklink "%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup\master-shortcut.ahk" %cd%\master.ahk
