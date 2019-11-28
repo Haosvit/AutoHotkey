@@ -13,6 +13,8 @@ SetWorkingDir, %A_ScriptDir%/EmojiKeyBindings
 SetWorkingDir, %A_ScriptDir%
 #include %A_ScriptDir%/mediaKeyBindings.ahk
 #include, %A_ScriptDir%/winSize/winSize.ahk
+#include, %A_ScriptDir%/guidgen.ahk
+#include, %A_ScriptDir%/timestamp.ahk
 
 ; master's codes
 gShowSourceFolder:
