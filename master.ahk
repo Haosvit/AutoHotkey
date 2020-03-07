@@ -15,9 +15,11 @@ SetWorkingDir, %A_ScriptDir%
 #include, %A_ScriptDir%/winSize/winSize.ahk
 #include, %A_ScriptDir%/guidgen.ahk
 #include, %A_ScriptDir%/timestamp.ahk
+#include, %A_ScriptDir%/keyBindings.ahk
+#include, %A_ScriptDir%/pageZoom.ahk
 
 ; master's codes
 gShowSourceFolder:
   explorerCmd := "explorer /select," A_ScriptDir
   Run %explorerCmd%
-Return
+return

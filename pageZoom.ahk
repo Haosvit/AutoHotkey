@@ -1,0 +1,2 @@
+RButton & WheelRight:: ^+
+RButton & WheelLeft:: ^-
