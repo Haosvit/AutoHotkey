@@ -1,4 +1,4 @@
-^#R:: Reload
+^+Space:: Reload
 #Q::
   WinGetPos, x, y, w, h, A
   WinGetTitle, winTit, A
@@ -11,7 +11,7 @@
   newW := WINSIZE_winSizes[WINSIZE_sizeIndex][1]
   newH := WINSIZE_winSizes[WINSIZE_sizeIndex][2]
 
-  screenNr := (x // WINSIZE_SCREENSIZE_W) + 1
+  screenNr := (x / WINSIZE_SCREENSIZE_W) + 1
   if ((x + newW) > (screenNr) * WINSIZE_SCREENSIZE_W) {
      x := screenNr * WINSIZE_SCREENSIZE_W - (x + newW)
   }
@@ -28,4 +28,14 @@ return
 
 RemoveToolTip:
 ToolTip
+return
+
+
+; Win + k
+#K:: ;dock the active window to top half of the specified screen
+VERTICAL_MON_INDEX = 1;
+SysGet, mon, Monitor, %VERTICAL_MON_INDEX%
+w := monRight - monLeft
+h := (monBottom - monTop) // 2
+WinMove, A, , %monLeft%, %monTop%, %w%, %h%
 return
