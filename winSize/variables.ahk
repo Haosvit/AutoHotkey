@@ -3,3 +3,4 @@ global WINSIZE_sizeIndex := 1
 global WINSIZE_currentWinTitle := ""
 global WINSIZE_SCREENSIZE_W := 1920
 global WINSIZE_SCREENSIZE_H := 1080
+global WINSIZE_TASKBAR_H := 30
