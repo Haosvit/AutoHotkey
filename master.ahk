@@ -15,8 +15,8 @@ SetWorkingDir, %A_ScriptDir%
 #include, %A_ScriptDir%/winSize/winSize.ahk
 #include, %A_ScriptDir%/guidgen.ahk
 #include, %A_ScriptDir%/timestamp.ahk
-#include, %A_ScriptDir%/keyBindings.ahk
-#include, %A_ScriptDir%/pageZoom.ahk
+#include, %A_ScriptDir%/readMode.ahk
+#include, %A_ScriptDir%/onScreenKeyboard.ahk
 
 ; master's codes
 gShowSourceFolder:
