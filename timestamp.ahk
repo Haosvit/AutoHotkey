@@ -1,7 +1,9 @@
-+F5::
+pasteTimestamp()
+{
   FormatTime, timestamp, %A_Now%, yyyy-MMM-dd-HHmmss
   backupClip := Clipboard
   Clipboard := timestamp
   SendInput,^v
   Clipboard := backupClip
-return
+  return
+}

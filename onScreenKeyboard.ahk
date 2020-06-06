@@ -1,3 +1,6 @@
-RButton & LButton::
-Run %ComSpec% /c "start osk"
-return
+onScreenKeyBoard()
+{
+  ; Run %ComSpec% /c "start osk"
+  Run osk
+  return
+}

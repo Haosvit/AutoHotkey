@@ -1,4 +1,5 @@
-^#R::
+readMode()
+{
   global READMODE_WINSIZE_W := 1024
   global READMODE_WINSIZE_H := 768
   global SCREEN_W := 1920
@@ -15,4 +16,5 @@
   WinMove, A, , %newL%, %newT%, %newW%, %newH%
 
   Send, ^{NumpadAdd}
-return
+  return
+}

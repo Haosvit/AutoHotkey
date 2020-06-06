@@ -1,4 +1,5 @@
-#Q::
+cycleWindowSizes()
+{
   WinGetPos, x, y, w, h, A
   WinGetTitle, winTit, A
 
@@ -21,17 +22,20 @@
   if (WINSIZE_sizeIndex > WINSIZE_winSizes.Length()) {
     WINSIZE_sizeIndex := 1
   }
-return
+  return
+}
 
 RemoveToolTip:
-ToolTip
+  ToolTip
 return
 
-; Win + k
-#K:: ;dock the active window to top half of the specified screen
-VERTICAL_MON_INDEX = 1;
-SysGet, mon, Monitor, %VERTICAL_MON_INDEX%
-w := monRight - monLeft
-h := (monBottom - monTop) // 2
-WinMove, A, , %monLeft%, %monTop%, %w%, %h%
-return
+;dock the active window to top half of the specified screen
+dockTopHalf()
+{
+  VERTICAL_MON_INDEX = 1;
+  SysGet, mon, Monitor, %VERTICAL_MON_INDEX%
+  w := monRight - monLeft
+  h := (monBottom - monTop) // 2
+  WinMove, A, , %monLeft%, %monTop%, %w%, %h%
+  return
+}

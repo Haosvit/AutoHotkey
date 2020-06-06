@@ -22,18 +22,20 @@ GUID()
    return h
 }
 
-; Win+G - Generate and paste a GUID
-+F6::
-guid := GUID()
-StringLower, guid, guid
-Clipboard := guid
-SendInput,^v
-return
+pasteLowercaseGuid()
+{
+   guid := GUID()
+   StringLower, guid, guid
+   Clipboard := guid
+   SendInput,^v
+   return
+}
 
-; Win+Shift+G - Generate an UPPERCASE GUID
-#+F6::
-guid := GUID()
-StringUpper, guid, guid
-Clipboard := guid
-SendInput,^v
-return
+pasteUppercaseGuid()
+{
+   guid := GUID()
+   StringUpper, guid, guid
+   Clipboard := guid
+   SendInput,^v
+   return
+}
