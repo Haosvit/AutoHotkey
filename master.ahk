@@ -1,5 +1,8 @@
 #Persistent
 
+; Tray
+Menu, Tray, Add, Show source folder, gShowSourceFolder
+
 ; includes variables
 #include %A_ScriptDir%/winSize/variables.ahk
 
@@ -24,8 +27,6 @@ SetWorkingDir, %A_ScriptDir%
 #Q:: cycleWindowSizes()
 RButton & LButton:: onScreenKeyBoard()
 
-; Tray
-Menu, Tray, Add, Show source folder, gShowSourceFolder
 gShowSourceFolder:
   explorerCmd := "explorer /select," A_ScriptDir
   Run %explorerCmd%
