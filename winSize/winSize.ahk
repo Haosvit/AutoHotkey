@@ -1,3 +1,4 @@
+
 locateWindowsInMonitor(x, y, w, h)
 {
   SysGet, monitorCount, MonitorCount
@@ -68,3 +69,14 @@ cycleWindowSizes()
 RemoveToolTip:
   ToolTip
 return
+
+
+nextDesktop()
+{
+  Send ^#{Right}
+}
+
+prevDesktop()
+{
+  Send ^#{Left}
+}
