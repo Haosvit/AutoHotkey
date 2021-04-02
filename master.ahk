@@ -1,7 +1,7 @@
 #Persistent
 
 ; Tray
-Menu, Tray, Add, Show source folder, gShowSourceFolder
+Menu, Tray, Add, Open source in VsCode, gOpenSourceInVsCode
 
 ; includes variables
 #include %A_ScriptDir%/winSize/variables.ahk
@@ -28,14 +28,14 @@ SetWorkingDir, %A_ScriptDir%
 +F6:: pasteLowercaseGuid()
 +F5:: pasteTimestamp()
 #Q:: cycleWindowSizes()
-RButton & LButton:: onScreenKeyBoard()
+; RButton & LButton:: onScreenKeyBoard()
 #T:: toggleWinOnTopTransparent(200)
 
 ~!WheelRight::nextDesktop()
 ~!WheelLeft::prevDesktop()
 
 
-gShowSourceFolder:
-  explorerCmd := "explorer /select," A_ScriptDir
-  Run %explorerCmd%
+gOpenSourceInVsCode:
+  command := "code -n " . A_ScriptDir
+  Run %ComSpec% /c %command% 
 return
