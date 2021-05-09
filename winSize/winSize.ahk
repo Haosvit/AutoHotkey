@@ -80,3 +80,15 @@ prevDesktop()
 {
   Send ^#{Left}
 }
+
+mouseDownWindowResizingCorner() 
+{
+  ;MouseGetPos, mouseX, mouseY
+  WinGetPos, x, y, w, h, A
+  MouseClick, L, % w - 3 , % h - 3, 1, 0, D
+  Tooltip % "Resize windows, [LClick] to confirm, [Esc] to cancel"
+  ; Restore mouse
+  ; KeyWait, LButton, D
+  ; KeyWait, LButton, U
+  ; MouseMove, %mouseX%, %mouseY%, 0
+}

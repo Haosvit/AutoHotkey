@@ -28,6 +28,7 @@ SetWorkingDir, %A_ScriptDir%
 +F6:: pasteLowercaseGuid()
 +F5:: pasteTimestamp()
 #Q:: cycleWindowSizes()
+!+Q:: mouseDownWindowResizingCorner()
 ; RButton & LButton:: onScreenKeyBoard()
 #T:: toggleWinOnTopTransparent(200)
 
