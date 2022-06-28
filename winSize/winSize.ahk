@@ -42,8 +42,29 @@ cycleWindowSizes()
   monW := monWorkAreaRight - monWorkAreaLeft
   monH := monWorkAreaBottom - monWorkAreaTop
 
-  newW := WINSIZE_winSizes[WINSIZE_sizeIndex][1]
-  newH := WINSIZE_winSizes[WINSIZE_sizeIndex][2]
+  ; newW := WINSIZE_winSizes[WINSIZE_sizeIndex][1]
+  ; newH := WINSIZE_winSizes[WINSIZE_sizeIndex][2]
+  percentW := WINSIZE_winSizes[WINSIZE_sizeIndex][1]
+  percentH := WINSIZE_winSizes[WINSIZE_sizeIndex][2]
+  
+  if (percentW <> "") 
+  {
+    newW := percentW < 1 ? percentW * monW : percentW
+  } 
+  else 
+  {
+    newW := percentH < 1 ? percentH * monH : percentH
+  }
+  
+  if (percentH <> "")
+  {
+    newH := percentH < 1 ? percentH * monH : percentH
+  } 
+  else 
+  {
+    newH := newW
+  }
+  
   newT := monWorkAreaTop + (monH - newH) / 2
   newL := monWorkAreaLeft + (monW - newW) /2
 
